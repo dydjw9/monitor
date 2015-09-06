@@ -81,7 +81,7 @@
 /*  50 */     this.PadLabel = new JLabel();
 /*  51 */     this.PadText = new JTextField();
 /*  52 */     this.Pass = new JButton();
-			  this.PassControl=new JButton();
+			  
 /*  53 */     this.jScrollPane1 = new JScrollPane();
 /*  54 */     this.jTextArea = new JTextArea();
 /*  55 */     this.Run = new JButton();
@@ -293,7 +293,16 @@
 				{
 					i=i+1;
 				}
+				
 				this.Pass.setText(passtype[i+1]);
+				if(this.TypeText.getText()=="form")
+				{
+					this.guimoni.databuffer[this.guimoni.getlocation()][17]=passtype[i+1];
+				}
+				else
+				{
+					this.guimoni.databuffer[this.guimoni.getlocation()][20]=passtype[i+1];
+				}
 				this.UpdateDisplay();
 				}
 /*     */ 

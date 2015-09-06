@@ -24,6 +24,7 @@
 /*     */   private String DeviceType;
 /*     */   private String PassKey;
 /*     */   private boolean IsFind;
+			private int location;
 /*     */ 
 /*     */   public GuiMonitor(NetBeanFrame n)
 /*     */   {
@@ -41,7 +42,7 @@
 /*  37 */     int formid = 0;
 /*  38 */     double tempRvirgin_neg5 = 0.0D;
 /*     */ 
-/*  40 */     int location = 0;
+/*  40 */     location = 0;
 /*  41 */     monitor.initiate();
 /*  42 */     this.stringbuilder = new StringBuilder();
 /*     */     try
@@ -261,6 +262,10 @@
 /* 287 */     monitorpath = this.NBeanFrame.getMonitorPath() + "\\";
 /*     */   }
 /*     */ 
+			public int getlocation()
+			{
+				return this.location;
+			}
 /*     */   public void UpdateDisplay(Ddevice device)
 /*     */   {
 /* 293 */     this.NBeanFrame.setType(this.DeviceType);
