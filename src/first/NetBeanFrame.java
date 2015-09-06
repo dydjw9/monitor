@@ -20,9 +20,9 @@
 /*     */ import javax.swing.JScrollPane;
 /*     */ import javax.swing.JTextArea;
 /*     */ import javax.swing.JTextField;
-import javax.swing.LayoutStyle;
+		  import javax.swing.LayoutStyle;
 /*     */ import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.LayoutStyle.ComponentPlacement;
+		  import javax.swing.LayoutStyle.ComponentPlacement;
 /*     */ import javax.swing.UIManager;
 /*     */ import javax.swing.UIManager.LookAndFeelInfo;
 /*     */ import javax.swing.UnsupportedLookAndFeelException;
@@ -37,9 +37,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 /*     */   private JLabel MonitorAddress;
 /*     */   private JLabel PadLabel;
 /*     */   private JTextField PadText;
-/*     */   private JLabel Pass;
+/*     */   private JButton Pass;
 /*     */   private JButton Path;
 /*     */   private JButton Run;
+            private JButton PassControl;
 /*     */   private JButton SaveButton;
 /*     */   private JLabel TypeLabel;
 /*     */   private JTextField TypeText;
@@ -79,7 +80,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 /*  49 */     this.DesignText = new JTextField();
 /*  50 */     this.PadLabel = new JLabel();
 /*  51 */     this.PadText = new JTextField();
-/*  52 */     this.Pass = new JLabel();
+/*  52 */     this.Pass = new JButton();
+			  this.PassControl=new JButton();
 /*  53 */     this.jScrollPane1 = new JScrollPane();
 /*  54 */     this.jTextArea = new JTextArea();
 /*  55 */     this.Run = new JButton();
@@ -120,10 +122,21 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 /*  91 */     this.jTextArea.setRows(5);
 /*  92 */     this.jScrollPane1.setViewportView(this.jTextArea);
 /*     */ 
+			  this.PassControl.setText("PassControl");
+			  this.PassControl.addActionListener(new ActionListener() {
+		      public void actionPerformed(ActionEvent evt) {
+		      NetBeanFrame.this.RunActionPerformed(evt);
+				  } });
 /*  94 */     this.Run.setText("Run");
 /*  95 */     this.Run.addActionListener(new ActionListener() {
 /*     */       public void actionPerformed(ActionEvent evt) {
 /*  97 */         NetBeanFrame.this.RunActionPerformed(evt);
+/*     */       }
+/*     */     });
+			  this.Pass.setText("Pass");
+/*  95 */     this.Pass.addActionListener(new ActionListener() {
+/*     */       public void actionPerformed(ActionEvent evt) {
+/*  97 */         NetBeanFrame.this.PassActionPerformed(evt);
 /*     */       }
 /*     */     });
 /* 101 */     this.SaveButton.setText("Set Saving Path");
@@ -144,6 +157,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 /* 117 */       .addGap(18, 18, 18)
 /* 118 */       .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
 /* 119 */       .addComponent(this.Run, -1, -1, 32767)
+
 /* 120 */       .addComponent(this.SaveButton, -1, 96, 32767))
 /* 121 */       .addContainerGap(-1, 32767))
 /* 122 */       .addGroup(layout.createSequentialGroup()
@@ -173,8 +187,13 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 /* 145 */       .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 /* 146 */       .addGroup(layout.createSequentialGroup()
 /* 147 */       .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, -1, 32767)
-/* 148 */       .addComponent(this.Pass, -2, 57, -2)
+/* 148 */       .addComponent(this.Pass, -2, 96, -2)
+				
 /* 149 */       .addGap(48, 48, 48))
+
+              
+/* 149 */     
+
 /* 150 */       .addGroup(layout.createSequentialGroup()
 /* 151 */       .addGap(58, 58, 58)
 /* 152 */       .addComponent(this.Path)
@@ -209,8 +228,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 /* 181 */       .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
 /* 182 */       .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, -1, 32767)
 /* 183 */       .addComponent(this.Run, -2, 59, -2)
+
 /* 184 */       .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
 /* 185 */       .addComponent(this.SaveButton, -2, 53, -2)))
+			
 /* 186 */       .addContainerGap(26, 32767)));
 /*     */ 
 /* 189 */     setBounds(0, 0, 525, 418);
@@ -265,6 +286,16 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 /* 282 */       this.Run.setText("Run");
 /*     */     }
 /*     */   }
+	private void PassActionPerformed(ActionEvent evt)
+				{String[] passtype={"Pass","Weak","Fail"};
+				int i=0;
+				while(this.Pass.getText()!=passtype[i])
+				{
+					i=i+1;
+				}
+				this.Pass.setText(passtype[i+1]);
+				this.UpdateDisplay();
+				}
 /*     */ 
 /*     */   private void SaveActionPerformed(ActionEvent evt)
 /*     */   {
