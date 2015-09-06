@@ -122,11 +122,7 @@
 /*  91 */     this.jTextArea.setRows(5);
 /*  92 */     this.jScrollPane1.setViewportView(this.jTextArea);
 /*     */ 
-			  this.PassControl.setText("PassControl");
-			  this.PassControl.addActionListener(new ActionListener() {
-		      public void actionPerformed(ActionEvent evt) {
-		      NetBeanFrame.this.RunActionPerformed(evt);
-				  } });
+			
 /*  94 */     this.Run.setText("Run");
 /*  95 */     this.Run.addActionListener(new ActionListener() {
 /*     */       public void actionPerformed(ActionEvent evt) {
