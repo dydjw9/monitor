@@ -266,6 +266,16 @@
 			{
 				return this.location;
 			}
+			public void ChangePassType(String s)
+			
+			{
+				if(this.DeviceType=="switching")
+				{
+					this.databuffer[location][20]=s;
+				}
+				else 
+				{this.databuffer[location][17]=s;}
+			}
 /*     */   public void UpdateDisplay(Ddevice device)
 /*     */   {
 /* 293 */     this.NBeanFrame.setType(this.DeviceType);

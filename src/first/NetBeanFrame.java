@@ -286,19 +286,18 @@
 				{String[] passtype={"Pass","Weak","Fail"};
 				int i=0;
 				while(this.Pass.getText()!=passtype[i])
-				{
+			{
 					i=i+1;
+					if(i==3)
+						i=0;
 				}
+				if(i==2)
+					i=0; 
+				else i++;
 				
-				this.Pass.setText(passtype[i+1]);
-				if(this.TypeText.getText()=="form")
-				{
-					this.guimoni.databuffer[this.guimoni.getlocation()][17]=passtype[i+1];
-				}
-				else
-				{
-					this.guimoni.databuffer[this.guimoni.getlocation()][20]=passtype[i+1];
-				}
+				this.SPass=passtype[i];
+				this.guimoni.ChangePassType(passtype[i]);
+				
 				this.UpdateDisplay();
 				}
 /*     */ 
